@@ -1,8 +1,10 @@
-/*
+/**
  * LCD.h
  *
  *  Created on: Sep 22, 2016
  *      Author: nem
+ *  Modified on: February 6, 2019
+ *  	Author: Nathan Klapstein, Thomas Lorincz
  */
 
 #ifndef LCD_H_
@@ -28,9 +30,11 @@
 #define WAIT_FOREVER 0
 #endif
 
-/* Use these constants to change the send_command calls in LCD.cpp for
+/*
+ * Use these constants to change the send_command calls in LCD.cpp for
  * exercise 2
- * See page 14 of the Nokia 5110 datasheet
+ *
+ * @see page 14 of the Nokia 5110 datasheet
  */
 
 // (H = 0 or H =  1) for these commands

@@ -1,0 +1,24 @@
+1.Modify the existing polling code in Keypad::Init and 
+Keypad::read_data to include the necessary interrupt code. 
+You’ll be using the SetPinIrq and DisableIrq functions for this. 
+
+keyboard can poll keys correctly yay
+
+
+2.Complete the Keypad::KeyPadISR1to include the code that handles
+ the keypad presses and transmits that info into the appropriate task. 
+
+
+3.You should see each button press represent a different character
+ or string on the keypad. The provided mapping is given in keypad.cpp. 
+Change the map to get unique outputs for each of the sixteen keys. 
+Use the serial console to display the value that each button maps to. 
+
+
+4.Once your interrupts are working correctly, you must pass the 
+value read from the keypad encoder to the UserMain runtime loop 
+or to a new task created for the purpose. Using a queue to pass 
+the keypad values is the recommended way. 
+Consult the uC documentation on how to use queues. 
+How you choose to pass this information via the queue is a 
+design decision on your part. 

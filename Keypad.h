@@ -1,9 +1,11 @@
-/*
+/**
  * Keypad.h
  *
  *  Created on: Oct 14, 2016
  *      Author: nem
  *      Some of this code was originally written by Justin Smalley 2008
+ *  Modified on: February 6, 2019
+ *  	Author: Nathan Klapstein, Thomas Lorincz
  */
 
 #ifndef KEYPAD_H_
@@ -46,10 +48,10 @@
 
 const char KeypadButtonMapText[BUTTONS] [MAX_BUTTON_NAME] =
 {
-"*", "*", "*", "*",
-"*", "*", "*", "*",
-"*", "*", "*", "*",
-"*", "*", "*", "*"
+"a", "e", "i", "m",
+"b", "f", "j", "n",
+"c", "g", "k", "o",
+"d", "h", "l", "p"
 };
 
 class Keypad {
@@ -62,6 +64,9 @@ protected:
 	/* Read the Data Out lines on the encoder */
 	void read_data(void);
 
+	/* parameters setup in {@code Keypad::Init} */
+	/* pointer to the interrupt service routine (ISR) function */
+	void ( *isr_func )( void );
 	BYTE byte_mode;
 
 public:
@@ -69,45 +74,54 @@ public:
 	/* Constructor initializes only ivar */
 	Keypad();
 
-	/* Initialization of pins occurs here */
-	/* mode should be either KEYPAD_POLL_MODE or KEYPAD_INT_MODE */
-	void Init(BYTE mode);
+	/**
+	 * Initializes all the GPIO pins that interface to the keypad.
+	 *
+	 * @param mode {@code KEYPAD_POLL_MODE} or {@code KEYPAD_INT_MODE}
+	 * @param *button_isr_func pointer to the interrupt service routine function
+	 */
+	void Init(BYTE mode,  void ( *button_isr_func )( void ));
 
-	/* Returns a pointer to a string corresponding to the last read button.
-	 * Does not read the Data Out lines.
+	/**
+	 * @returns a pointer to a string corresponding to the last read button.
+	 *
+	 * @note Does not read the Data Out lines.
 	 */
 	const char * GetLastButtonString(void);
 
-	/* Returns a pointer to a string corresponding to a new button press.
-	 * The string mappings are in keypad.cpp
-	 * This method does read the Data Out lines.
+	/**
+	 * @returns a pointer to a string corresponding to a new button press.
+	 *
+	 * @note The string mappings are in keypad.cpp
+	 * @note This method does read the Data Out lines.
 	 */
 	const char* GetNewButtonString(void);
 
-	/* Returns the state of the Data Available line. TRUE (high)
-	 * means a button is being pressed and FALSE (low)
-	 * means that no button is being pressed.
-	 * The data available line goes low
-	 * once the user takes their finger off a button.
+	/**
+	 * @returns the state of the Data Available line. {@code TRUE} (high)
+	 * 		means a button is being pressed and {@code FALSE} (low)
+	 * 		means that no button is being pressed.
+	 *
+	 * @note The data available line goes low once the user takes their
+	 * 		finger off a button.
 	 */
 	unsigned char ButtonPressed(void);
 
-	/* Returns the value on the encoder DO A, DO B, DO C, and DO D lines.
-	 * It varies from 0-15.
-	 * This method does read the Data out lines.
+	/**
+	 * @returns the value on the encoder DO A, DO B, DO C, and DO D lines.
+	 * 		It varies from 0-15.
+	 *
+	 * @note This method does read the Data out lines.
 	*/
 	unsigned char GetNewButtonNumber(void);
 
-	/* Returns the value on the encoder DO A, DO B, DO C,and DO D lines.
-	 * It varies from 0-15.
-	 * This method does not read the Data out lines.
+	/**
+	 * @returns the value on the encoder DO A, DO B, DO C,and DO D lines.
+	 * 		It varies from 0-15.
+	 *
+	 * @note This method does not read the Data out lines.
 	 */
 	unsigned char GetLastButtonNumber(void);
-
-	/* Init IRQ1 so that rising edge interrupt is used.
-	 *
-	 */
-	static void EdgePortISR1(void);
 };
 
 #endif /* KEYPAD_H_ */

@@ -1,0 +1,71 @@
+1. DO NOT connect the 50-pin ribbon cable between the ColdFire board
+and your breadboard just yet. Connect 3.3V from the power supply to
+power the encoder. You will start by taking measurements while 
+unconnected to the ColdFire board. 
+
+NTR
+
+2.Consult the oscilloscope user manual for instructions on how to 
+do single shot capture. You will also need to make use of the 
+measuring cursors to complete the following two measurements. 
+
+to obtain a manual we used the first *.pdf obtained from googling
+the oscilloscope unit number.
+
+
+3.You will be measuring some timing characteristics of the encoder
+using the oscilloscope. The Y lines coming into the encoder via 
+the keypad are normally pulled high. Once any button is pressed, 
+the Y line is driven low, the Data Available line is driven high
+and the output lines are driven with the number of the button that
+was pressed (0-15). Measure the time between any of the Y lines 
+going low and the Data Available line going high. 
+
+confused mux for encoder on sheet should be noted
+
+MM encoder
+74 mux
+
+
+
+y line: 41 - channel 1 -> y1
+Data available: DA - 12: channel 2 -> da
+
+
+y1 drop to DA up delay was about: 18.40ms (other go ~16ms)
+
+4.Measure the time when the Data Available line goes low between
+two consecutive button presses. Generate this scenario by pressing
+a button and then pressing a second button without releasing the 
+first button. Now release the first button and measure how long 
+the Data Available line is low. Take several readings and record
+the minimum and maximum for all of the presses. 
+
+capacitors were incorrectly installed
+
+forgot to ground probes 
+
+
+##first go:
+first max ch2 DA 0ms
+first min ch1 y  17ms
+first min ch2 DA 6.4ms
+second max ch1 y 16ms
+
+##second go:
+first max ch2 DA 0ms
+first min ch1 y  16.4ms
+first min ch2 DA 7.2ms
+second max ch1 y 16ms
+
+##third go:
+first max ch2 DA 0ms
+first min ch1 y  16.4ms
+first min ch2 DA 1.2ms
+second max ch1 y 14ms
+
+
+5.Compare the expected values from the MM74C922 data sheet. 
+Do your measured results match with the expected results? 
+Discuss this in your report.
+

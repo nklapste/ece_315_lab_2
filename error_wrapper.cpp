@@ -1,11 +1,12 @@
-/*
+/**
  * error_wrapper.cpp
  *
  *  Created on: 16-Jan-2014
  *      Author: Nancy Minderman
  *      Description: These wrapper functions will help display the errors returned from the
  *      				operating system calls
- *
+ *  Modified on: February 6, 2019
+ *  	Author: Nathan Klapstein, Thomas Lorincz
  */
 
 #include "predef.h"

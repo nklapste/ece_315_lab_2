@@ -1,0 +1,17 @@
+1.The four corner keys will be mapped to four separate functions:
+ * up
+ * down
+ * left
+ * right
+The movement of the sprite should be bounded by the outer edge 
+of the LCD meaning at no time should the display of the characters 
+rollover. Pressing the up, down, left and right keys when the box 
+is at the edge should result in no change to the display. 
+
+
+2.During the demo, the lab instructor will ask for your key layout
+for testing.
+
+
+3.The other 12 buttons on the keypad should be ignored.
+

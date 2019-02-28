@@ -1,8 +1,10 @@
-/*
+/**
  * point.h
  *
  *  Created on: Sep 22, 2016
  *      Author: nem
+ *  Modified on: February 6, 2019
+ *  	Author: Nathan Klapstein, Thomas Lorincz
  */
 
 #ifndef POINT_H_

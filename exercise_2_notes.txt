@@ -1,0 +1,40 @@
+1.Connect the 50-pin cable from the ColdFire microprocessor to your
+breadboard. 
+
+NTR
+
+2.Get the lab2.zip file from the eClass course website. 
+
+NTR
+
+3.Create a new project called lab2 in your ECE 315 workspace. 
+Follow the same procedure as you did in the tutorial.
+
+NTR
+
+4.Unzip and import all of the files into your project and delete the
+main.cpp file before building your project. 
+
+NTR
+
+5.Run the project and check the heartbeat and context switching 
+pins (J2[3]and J2[4]). 
+Verify that the default webpage is being served. 
+
+default webpage shown: ``The main page for the lab2 project. ``
+
+probe rounded to breadboard
+used jumper wire on breadboard to easily probe pins
+pin heartbeat j2[3]: both straight line 3.35v
+pin context switch j2[4]: both straight line
+
+6.We will be using the LCD for output in this lab. 
+Please remember that the encoder, multiplexor, and the LCD use 3.3V. 
+Using the wrong voltage may damage the board.
+
+
+7.Please note that at this point none of your keypad hardware will
+work as expected. You need to complete exercise three to see the 
+keypad working. 
+
+verifyied fucked lcd
